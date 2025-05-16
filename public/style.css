@@ -9,6 +9,18 @@ h1 {
   text-align: center;
 }
 
+.nav-bar {
+  width: 100%;
+  background-color: steelblue;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar-links {
+  padding: 0.5rem;
+}
+
 .underline {
   text-decoration: underline;
 }
@@ -30,9 +42,16 @@ h1 {
 }
 
 footer {
-  border: 1px solid black;
-  background-color: aqua;
+  display: flex;
   position: fixed;
+  justify-content: center;
   bottom: 0;
   width: 100%;
+}
+
+.footer-div {
+  background-color: lightblue;
+  text-align: center;
+  padding: 0.5rem;
+  border: 0.5px solid black;
 }
