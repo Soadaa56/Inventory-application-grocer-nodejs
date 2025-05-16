@@ -8,10 +8,10 @@
   <title><%= locals.title %>></title>
 </head>
 <nav>
-  <% links.forEach(link => { %>
-    <div class="nav-bar">
+  <div class="nav-bar">
+    <% links.forEach(link => { %>
       <a class="nav-bar-links" href="<%- link.href %>"><%- link.name %></a>
-    </div>
-  <% }); %>
+    <% }); %>
+  </div>
 </nav>
 <body>
