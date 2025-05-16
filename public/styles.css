@@ -1,0 +1,24 @@
+html {
+  font-size: 20px;
+  background-color: gainsboro;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.center {
+  text-align: center;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: yellow;
+}
