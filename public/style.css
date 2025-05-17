@@ -3,29 +3,28 @@ html {
   font-size: 20px;
 }
 
+footer {
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+}
+
 h1 {
   font-size: 60px;
   font-weight: bold;
   text-align: center;
 }
 
-.nav-bar {
-  width: 100%;
-  background-color: steelblue;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-}
-
-.nav-bar-links {
-  padding: 0.5rem;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
 .center {
+  text-align: center;
+}
+
+.footer-div {
+  background-color: lightblue;
+  border: 0.5px solid black;
+  padding: 0.5rem;
   text-align: center;
 }
 
@@ -33,25 +32,26 @@ h1 {
   color: green;
 }
 
+.nav-bar {
+  background-color: steelblue;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-bar-links {
+  padding: 0.5rem;
+}
+
 .red {
   color: red;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .yellow {
   color: yellow;
-}
-
-footer {
-  display: flex;
-  position: fixed;
-  justify-content: center;
-  bottom: 0;
-  width: 100%;
-}
-
-.footer-div {
-  background-color: lightblue;
-  text-align: center;
-  padding: 0.5rem;
-  border: 0.5px solid black;
 }
