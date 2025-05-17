@@ -2,6 +2,17 @@
 
 <h1><%= locals.title %></h1>
 
-<pre><%= JSON.stringify(products, null, 2) %></pre>
+<div class="products-item-wrapper">
+  <% products.forEach(product => { %>
+    <div class="product-item">
+      <%- product.name %>,
+      <%- product.size %>,
+      <%- product.price %>,
+      <%- product.sku %>,
+      <%- product.category_name %>,
+      <a href=""></a>
+    </div>
+  <% }); %>
+</div>
 
 <%- include("partials/footer") %>
