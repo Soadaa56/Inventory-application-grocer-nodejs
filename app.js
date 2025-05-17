@@ -7,8 +7,9 @@ const assetsPath = path.join(__dirname, "public")
 
 const links = require("./links")
 const indexRouter = require("./routes/indexRouter")
-const productRouter = require("./routes/productRouter")
-const categoryRouter = require("./routes/categoryRouter")
+const productsRouter = require("./routes/productsRouter")
+const categoriesRouter = require("./routes/categoriesRouter")
+const inventoryRouter = require("./routes/inventoryRouter")
 
 app.set('view engine', 'ejs')
 app.use(express.static(assetsPath));
@@ -19,8 +20,9 @@ app.use((req, res, next) => {
 })
 
 app.use("/", indexRouter)
-app.use("/products", productRouter)
-app.use("/categories", categoryRouter)
+app.use("/products", productsRouter)
+app.use("/categories", categoriesRouter)
+app.use("/inventory", inventoryRouter)
 
 app.listen(PORT, () => {
   console.log(`Express running on port: ${PORT}`)
