@@ -32,6 +32,17 @@ h1 {
   color: green;
 }
 
+.index-logo-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.index-logo {
+  max-height: 300px;
+  margin: 0;
+}
+
 .nav-bar {
   background-color: steelblue;
   border: 1px solid black;
