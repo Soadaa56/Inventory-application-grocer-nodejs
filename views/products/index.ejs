@@ -7,10 +7,10 @@
     <div class="product-item">
       <%- product.name %>,
       <%- product.size %>,
-      <%- product.price %>,
+      $<%- product.price %>,
       <%- product.sku %>,
       <%- product.category_name %>,
-      <a href="/products/show/<%-product.id%>">GO TO</a>
+      <a href="/products/show/<%- product.id %>">GO TO</a>
     </div>
   <% }); %>
 </div>

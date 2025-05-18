@@ -3,11 +3,15 @@
 <h1><%- product.name %>, <%- product.size %></h1>
 
 <div class="">
-  <div>Price: <%- product.price  %></div>
-    <div>Category:
-      <a href="/categories/show/<%-locals.title%>"><%- product.category_name %></a>
+  <div>Price: $<%- product.price  %></div>
+    <div>
+      Category:
+      <a href="/categories/show/<%- product.category_name %>"><%- product.category_name %></a>
     </div>
-  <div>Supplier: <%- product.supplier_name %></div>
+  <div>
+    Supplier:
+    <a href="/suppliers/show/<%- product.supplier_name %>"><%- product.supplier_name %></a>
+  </div>
   <div>Quantity In Stock: ?</div>
 </div>
 

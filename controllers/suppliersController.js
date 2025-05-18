@@ -16,7 +16,7 @@ async function getProductsWithSupplier(req, res) {
   
   console.log(productsBySupplier)
   res.status(200).render("suppliers/show", {
-    title: "Supplier name",
+    title: productsBySupplier[0].supplier_name,
     productsBySupplier : productsBySupplier 
   })
 }

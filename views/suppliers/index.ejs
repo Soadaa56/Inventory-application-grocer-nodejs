@@ -5,7 +5,7 @@
 <div>
   <% suppliers.forEach(supplier => { %>
     <div>
-      Supplier: <%- supplier.name %>
+      <a href="/suppliers/show/<%- supplier.name %>"><%- supplier.name %></a>
     </div>
   <% }); %>
 </div>

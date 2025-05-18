@@ -40,10 +40,21 @@ async function getAllSuppliers() {
   return rows
 }
 
+async function getProductsWithSupplier(supplier) {
+  const { rows } = await pool.query(`
+    SELECT products.*, suppliers.name AS supplier_name
+    FROM products
+    Join suppliers ON products.supplier_id = suppliers.id
+    WHERE LOWER(suppliers.name) = LOWER($1);    
+    `, [supplier])
+  return rows
+}
+
 module.exports = {
   getAllProducts,
   getProductWithId,
   getAllCategories,
   getProductsWithCategory,
-  getAllSuppliers
-}
+  getAllSuppliers,
+  getProductsWithSupplier
+} 
