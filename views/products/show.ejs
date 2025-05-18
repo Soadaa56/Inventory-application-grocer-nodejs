@@ -4,7 +4,9 @@
 
 <div class="">
   <div>Price: <%- product.price  %></div>
-  <div>Category: <%- product.category_name %></div>
+    <div>Category:
+      <a href="/categories/show/<%-locals.title%>"><%- product.category_name %></a>
+    </div>
   <div>Supplier: <%- product.supplier_name %></div>
   <div>Quantity In Stock: ?</div>
 </div>
