@@ -10,6 +10,7 @@ const indexRouter = require("./routes/indexRouter")
 const productsRouter = require("./routes/productsRouter")
 const categoriesRouter = require("./routes/categoriesRouter")
 const inventoryRouter = require("./routes/inventoryRouter")
+const suppliersRouter = require("./routes/suppliersRouter")
 
 app.set('view engine', 'ejs')
 app.use(express.static(assetsPath));
@@ -23,6 +24,7 @@ app.use("/", indexRouter)
 app.use("/products", productsRouter)
 app.use("/categories", categoriesRouter)
 app.use("/inventory", inventoryRouter)
+app.use("/suppliers", suppliersRouter)
 
 // Error handling middleware
 app.use((err, req, res, next) => {

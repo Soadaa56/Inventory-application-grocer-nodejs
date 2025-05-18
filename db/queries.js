@@ -21,7 +21,7 @@ async function getProductWithId(productId) {
 }
 
 async function getAllCategories() {
-  const { rows } = await pool.query("SELECT * FROM categories")
+  const { rows } = await pool.query("SELECT * FROM categories;")
   return rows
 }
 
@@ -35,9 +35,15 @@ async function getProductsWithCategory(category) {
   return rows
 }
 
+async function getAllSuppliers() {
+  const { rows } = await pool.query("SELECT * FROM suppliers;")
+  return rows
+}
+
 module.exports = {
   getAllProducts,
   getProductWithId,
   getAllCategories,
-  getProductsWithCategory
+  getProductsWithCategory,
+  getAllSuppliers
 }

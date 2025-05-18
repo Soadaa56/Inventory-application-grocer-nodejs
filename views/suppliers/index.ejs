@@ -1,0 +1,13 @@
+<%- include("../partials/header") %>
+
+<h1><%= locals.title %></h1>
+
+<div>
+  <% suppliers.forEach(supplier => { %>
+    <div>
+      Supplier: <%- supplier.name %>
+    </div>
+  <% }); %>
+</div>
+
+<%- include("../partials/footer") %>
