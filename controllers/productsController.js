@@ -1,23 +1,23 @@
+const expressAsyncHandler = require("express-async-handler")
 const db = require("../db/queries")
 
-async function getAllProducts(req, res) {
+const getAllProducts = expressAsyncHandler(async (req, res) => {
   const products = await db.getAllProducts()
-  
-  res.render("products/index", {
+  res.status(200).render("products/index", {
     title: "All Products",
     products: products
   })
-}
+})
 
-async function getProduct(req, res) {
+const getProduct = expressAsyncHandler(async (req, res) => {
   const { productId } = req.params
   const product = await db.getProductWithId(productId)
 
-  res.render("products/show", {
+  res.status(200).render("products/show", {
     title: product.name,
     product: product
   })
-}
+})
 
 module.exports = {
   getAllProducts,

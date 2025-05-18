@@ -24,6 +24,12 @@ app.use("/products", productsRouter)
 app.use("/categories", categoriesRouter)
 app.use("/inventory", inventoryRouter)
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Internal Server Error');
+});
+
 app.listen(PORT, () => {
   console.log(`Express running on port: ${PORT}`)
 })
