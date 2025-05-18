@@ -3,7 +3,7 @@
 <h1><%= locals.title %> Products</h1>
 
 <div class="products-item-wrapper">
-  <% products.forEach(product => { %>
+  <% productsByCategory.forEach(product => { %>
     <div class="product-item">
       <%- product.name %>,
       <%- product.size %>,

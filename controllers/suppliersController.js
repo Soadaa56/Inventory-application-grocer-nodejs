@@ -2,7 +2,6 @@ const db = require("../db/queries")
 
 async function getAllSuppliers(req, res) {
   const suppliers = await db.getAllSuppliers()
-  console.log(suppliers)
 
   res.status(200).render("suppliers/index", {
     title: "Suppliers",
@@ -10,6 +9,19 @@ async function getAllSuppliers(req, res) {
   })
 }
 
+async function getProductsWithSupplier(req, res) {
+  const { supplier } = req.params
+  console.log(supplier)
+  const productsBySupplier = await db.getProductsWithSupplier(supplier)
+  
+  console.log(productsBySupplier)
+  res.status(200).render("suppliers/show", {
+    title: "Supplier name",
+    productsBySupplier : productsBySupplier 
+  })
+}
+
 module.exports = {
-  getAllSuppliers
+  getAllSuppliers,
+  getProductsWithSupplier
 }
