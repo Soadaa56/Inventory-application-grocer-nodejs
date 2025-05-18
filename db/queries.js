@@ -20,7 +20,13 @@ async function getProductWithId(productId) {
   return result.rows[0]
 }
 
+async function getAllCategories() {
+  const { rows } = await pool.query("SELECT * FROM categories")
+  return rows
+}
+
 module.exports = {
   getAllProducts,
-  getProductWithId
+  getProductWithId,
+  getAllCategories
 }
