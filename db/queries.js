@@ -30,7 +30,7 @@ async function getProductsWithCategory(category) {
     SELECT products.*, categories.name AS category_name
     FROM products
     JOIN categories ON products.category_id = categories.id
-    WHERE categories.name = $1
+    WHERE LOWER(categories.name) = LOWER($1);
     `, [category])
   return rows
 }
