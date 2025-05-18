@@ -20,12 +20,11 @@ async function getAllCategories(req, res) {
 
 async function getProductsWithCategory(req, res) {
   const { category } = req.params
-  const products = await db.getProductsWithCategory(category)
-  console.log(products[0])
+  const productsByCategory = await db.getProductsWithCategory(category)
 
   res.status(200).render("categories/show", {
-    title: products[0].category_name,
-    products: products
+    title: productsByCategory[0].category_name,
+    productsByCategory : productsByCategory 
   })
 }
 
