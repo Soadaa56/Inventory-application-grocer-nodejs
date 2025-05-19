@@ -1,14 +1,6 @@
 const expressAsyncHandler = require("express-async-handler")
 const db = require("../db/queries")
 
-// const getAllCategories = expressAsyncHandler(async (req, res) => {
-//   const categories = await db.getAllCategories
-//   console.log(categories)
-//   res.status(200).render("categories/index", {
-//     title: "Categories",
-//     categories: categories
-//   })
-// })
 async function getAllCategories(req, res) {
   const categories = await db.getAllCategories()
   
@@ -27,7 +19,6 @@ async function getNewCategory(req, res) {
 const getCategory = expressAsyncHandler(async (req, res) => {
   const { categoryId } = req.params
   const category = await db.getCategoryWithId(categoryId)
-  console.log(category)
 
   res.status(200).render("categories/edit", {
     title: category.name,
