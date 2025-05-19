@@ -18,6 +18,16 @@ const getProductsNewForm = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const getProductsEditFormWithId = (async (req, res) => {
+  const { productId } = req.params
+  const product = await db.getProductWithId(productId)
+
+  res.render("inventory/productsEditForm", {
+    title: product.name,
+    product: product
+  })
+})
+
 const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
   res.render("inventory/shipmentNewForm", {
     title: "New Shipment Registry"
@@ -27,5 +37,6 @@ const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
 module.exports = {
   getInventoryIndex,
   getProductsNewForm,
+  getProductsEditFormWithId,
   getShipmentNewForm
 }

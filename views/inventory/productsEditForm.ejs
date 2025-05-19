@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+
+<h1><%= locals.title %></h1>
+
+<div>
+  <form action="/inventory/products/edit/<%- product.id %>">
+    <div class="form-field">
+      <label for="productName">Product Name: </label>
+      <input type="text" name="productName" id="productName" class="<%- product.name%>">
+    </div>
+    
+    <label for="productSize">Product Size: </label>
+
+    <label for="productPrice">Product Price: </label>
+
+    <label for="productCategory">Product Category: </label>
+
+    <label for="productSupplier">Product Supplier: </label>
+
+    <input type="submit" value="Edit Product" class="btn btn-green">
+  </form>
+</div>
+
+<%- include("../partials/footer") %>
