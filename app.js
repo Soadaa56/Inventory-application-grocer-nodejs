@@ -26,9 +26,16 @@ app.use("/categories", categoriesRouter)
 app.use("/inventory", inventoryRouter)
 app.use("/suppliers", suppliersRouter)
 
+// I want it to be obvious when this middleware is used
+// wrapping functions with express-async-handler seem to be the proper way of doing things
+// but wrapping functions with this middleware isn't something I'm used to doing and 
+// is 'slightly' annoying so I would feel better when this middleware is called 
+
 // Error handling middleware
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+  console.log("Below is express-async-handler middleware err.stack")
+  console.error(err.stack);
+  console.log("Above is express-async-handler middleware err.stack")
     res.status(500).send('Internal Server Error');
 });
 
