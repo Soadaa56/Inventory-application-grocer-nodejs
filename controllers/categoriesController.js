@@ -18,6 +18,12 @@ async function getAllCategories(req, res) {
   })
 }
 
+async function getNewCategory(req, res) {
+  res.render("categories/new", {
+    title: "Add New Category"
+  })
+}
+
 async function getProductsWithCategory(req, res) {
   const { category } = req.params
   const productsByCategory = await db.getProductsWithCategory(category)
@@ -30,5 +36,6 @@ async function getProductsWithCategory(req, res) {
 
 module.exports = {
   getAllCategories,
+  getNewCategory,
   getProductsWithCategory
 }

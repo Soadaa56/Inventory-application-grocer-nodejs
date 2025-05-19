@@ -3,6 +3,8 @@ const categoriesRouter = Router()
 const categoriesController = require("../controllers/categoriesController")
 
 categoriesRouter.get("/", categoriesController.getAllCategories)
+
+categoriesRouter.get("/new", categoriesController.getNewCategory)
 categoriesRouter.get("/show/:category", categoriesController.getProductsWithCategory)
 
 module.exports = categoriesRouter

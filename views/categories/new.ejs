@@ -1,0 +1,17 @@
+<%- include("../partials/header") %>
+
+<h1><%= locals.title %></h1>
+
+<div>
+  <form method="POST" action="/new">
+    <div>
+      <label for="categoryName">Category Name: </label>
+      <input type="text" name="categoryName" id="categoryName">
+    </div>
+    <div>
+      <input type="submit" value="Create new Category">
+    </div>
+  </form>
+</div>
+
+<%- include("../partials/footer") %>
