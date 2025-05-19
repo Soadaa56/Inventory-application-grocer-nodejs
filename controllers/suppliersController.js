@@ -23,7 +23,7 @@ const postNewSupplier = expressAsyncHandler(async (req, res) => {
   console.log(supplierName)
 
   await db.insertNewSupplier(supplierName)
-  res.redirect("suppliers/index", {})
+  res.redirect("/suppliers")
 })
 
 const getProductsWithSupplier = expressAsyncHandler(async (req, res) => {
