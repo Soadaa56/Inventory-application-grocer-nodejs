@@ -2,4 +2,40 @@
 
 <h1><%= locals.title %></h1>
 
+<div class="form-container">
+  <form method="POST" action="/new" class="form-form">
+    <div class="form-field">
+      <label for="productName">Product Name: </label>
+      <input type="text" name="productName" id="productName">
+    </div>
+    <div class="form-field">
+      <label for="productPrice">Product Price: </label>
+      <input type="text" name="productPrice" id="productPrice">
+    </div>
+    <div class="form-field">
+      <label for="productSku">Product Sku: </label>
+      <input type="text" name="productSku" id="productSku">
+    </div>
+    <div class="form-field">
+      <label for="productCategory">Product Category: </label>
+      <select name="productCategory" id="productCategory">
+        <% categories.forEach(category => { %>
+          <option value="<%- category.name %>"><%- category.name %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="productSupplier">Product Supplier: </label>
+      <select name="productSupplier" id="productSupplier">
+        <% suppliers.forEach(supplier => { %>
+          <option value="<%- supplier.name %>"><%- supplier.name %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Create Product">
+    </div>
+  </form>
+</div>
+
 <%- include("../partials/footer") %>

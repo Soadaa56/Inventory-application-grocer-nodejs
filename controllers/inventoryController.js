@@ -8,8 +8,13 @@ const getInventoryIndex = expressAsyncHandler(async (req, res) => {
 })
 
 const getProductsNewForm = expressAsyncHandler(async (req, res) => {
+  const categories = await db.getAllCategories()
+  const suppliers = await db.getAllSuppliers()
+
   res.render("inventory/productsForm", {
-    title: "New Product Registry"
+    title: "New Product Registry",
+    categories: categories,
+    suppliers: suppliers
   })
 })
 
