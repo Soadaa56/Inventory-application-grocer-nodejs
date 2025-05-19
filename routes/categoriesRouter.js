@@ -5,6 +5,8 @@ const categoriesController = require("../controllers/categoriesController")
 categoriesRouter.get("/", categoriesController.getAllCategories)
 
 categoriesRouter.get("/new", categoriesController.getNewCategory)
+categoriesRouter.post("/new", categoriesController.postNewCategory)
+
 categoriesRouter.get("/show/:category", categoriesController.getProductsWithCategory)
 
 module.exports = categoriesRouter
