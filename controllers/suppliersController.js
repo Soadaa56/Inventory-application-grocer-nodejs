@@ -16,11 +16,19 @@ const getNewSupplier = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const getSupplier = expressAsyncHandler(async (req, res) => {
+  const { supplierId } = req.params
+  const supplier = await db.getSupplierWithId(supplierId)
+
+  res.status(200).render("suppliers/edit", {
+    title: supplier.name,
+    supplier: supplier
+  })
+})
+
 const postNewSupplier = expressAsyncHandler(async (req, res) => {
   const body = req.body
   const { supplierName } = body
-  console.log(body)
-  console.log(supplierName)
 
   await db.insertNewSupplier(supplierName)
   res.redirect("/suppliers")
@@ -28,7 +36,6 @@ const postNewSupplier = expressAsyncHandler(async (req, res) => {
 
 const getProductsWithSupplier = expressAsyncHandler(async (req, res) => {
   const { supplier } = req.params
-  console.log(supplier)
   const productsBySupplier = await db.getProductsWithSupplier(supplier)
 
   res.status(200).render("suppliers/show", {
@@ -40,6 +47,7 @@ const getProductsWithSupplier = expressAsyncHandler(async (req, res) => {
 module.exports = {
   getAllSuppliers,
   getNewSupplier,
+  getSupplier,
   postNewSupplier,
   getProductsWithSupplier
 }

@@ -37,7 +37,7 @@ async function getCategoryWithId(categoryId) {
 async function insertNewCategory(categoryName) {
   await pool.query(`
     INSERT INTO categories (name)
-    VALUES ($1)
+    VALUES ($1);
     `, [categoryName])
 }
 
@@ -56,10 +56,19 @@ async function getAllSuppliers() {
   return rows
 }
 
+async function getSupplierWithId(supplierId) {
+  const result = await pool.query(`
+    SELECT *
+    FROM suppliers
+    WHERE suppliers.id = $1;
+    `, [supplierId])
+  return result.rows[0]  
+}
+
 async function insertNewSupplier(supplierName) {
   await pool.query(`
     INSERT INTO suppliers (name)
-    VALUES ($1)
+    VALUES ($1);
     `, [supplierName])
 }
 
@@ -81,6 +90,7 @@ module.exports = {
   insertNewCategory,
   getProductsWithCategory,
   getAllSuppliers,
+  getSupplierWithId,
   insertNewSupplier,
   getProductsWithSupplier
 } 

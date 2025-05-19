@@ -5,8 +5,10 @@
 <div>
   <% suppliers.forEach(supplier => { %>
     <div>
-      <a href="/suppliers/show/<%- supplier.name %>"><%- supplier.name %></a>
+      <div><%- supplier.name %>: <a href="/suppliers/edit/<%- supplier.id %>">Edit Supplier</a></div>
+      Filter Products By <a href="/suppliers/show/<%- supplier.name %>"><%- supplier.name %></a>
     </div>
+    <br>
   <% }); %>
 </div>
 

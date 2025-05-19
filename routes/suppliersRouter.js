@@ -7,6 +7,8 @@ suppliersRouter.get("/", suppliersController.getAllSuppliers)
 suppliersRouter.get("/new", suppliersController.getNewSupplier)
 suppliersRouter.post("/new", suppliersController.postNewSupplier)
 
+suppliersRouter.get("/edit/:supplierId", suppliersController.getSupplier)
+
 suppliersRouter.get("/show/:supplier", suppliersController.getProductsWithSupplier)
 
 module.exports = suppliersRouter
