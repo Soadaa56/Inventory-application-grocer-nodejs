@@ -15,6 +15,14 @@ async function getNewSupplier(req, res) {
   })  
 }
 
+async function postNewSupplier(req, res) {
+  const body = req.body
+  const { supplierName } = body
+
+  await db.insertNewSupplier(supplierName)
+  res.status(200).redirect("suppliers/index", {})
+}
+
 async function getProductsWithSupplier(req, res) {
   const { supplier } = req.params
   console.log(supplier)
@@ -30,5 +38,6 @@ async function getProductsWithSupplier(req, res) {
 module.exports = {
   getAllSuppliers,
   getNewSupplier,
+  postNewSupplier,
   getProductsWithSupplier
 }
