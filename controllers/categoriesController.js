@@ -24,6 +24,17 @@ async function getNewCategory(req, res) {
   })
 }
 
+const getCategory = expressAsyncHandler(async (req, res) => {
+  const { categoryId } = req.params
+  const category = await db.getCategoryWithId(categoryId)
+  console.log(category)
+
+  res.status(200).render("categories/edit", {
+    title: category.name,
+    category: category
+  })
+})
+
 const postNewCategory = expressAsyncHandler(async (req, res) => {
   const body = req.body
   const { categoryName } = body
@@ -45,6 +56,7 @@ async function getProductsWithCategory(req, res) {
 module.exports = {
   getAllCategories,
   getNewCategory,
+  getCategory,
   postNewCategory,
   getProductsWithCategory
 }

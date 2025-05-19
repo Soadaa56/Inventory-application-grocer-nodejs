@@ -25,6 +25,15 @@ async function getAllCategories() {
   return rows
 }
 
+async function getCategoryWithId(categoryId) {
+  const result = await pool.query(`
+    SELECT * 
+    FROM categories
+    WHERE categories.id = $1;
+    `, [categoryId])
+  return result.rows[0]
+}
+
 async function insertNewCategory(categoryName) {
   await pool.query(`
     INSERT INTO categories (name)
@@ -68,6 +77,7 @@ module.exports = {
   getAllProducts,
   getProductWithId,
   getAllCategories,
+  getCategoryWithId,
   insertNewCategory,
   getProductsWithCategory,
   getAllSuppliers,

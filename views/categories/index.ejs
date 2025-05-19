@@ -5,9 +5,11 @@
 <div>
   <% categories.forEach(category => { %>
     <div>
-      <a href="/categories/show/<%- category.name %>"><%- category.name %></a>
-     
+      <div><%- category.name %>: <a href="/categories/edit/<%- category.id %>">Edit Category</a></div>
+      Filter Products By <a href="/categories/show/<%- category.name %>"><%- category.name %></a>
+      
     </div>
+    <br>
   <% }); %>
 </div>
 
