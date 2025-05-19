@@ -9,6 +9,12 @@ async function getAllSuppliers(req, res) {
   })
 }
 
+async function getNewSupplier(req, res) {
+  res.render("suppliers/new", {
+    title: "Add New Supplier"
+  })  
+}
+
 async function getProductsWithSupplier(req, res) {
   const { supplier } = req.params
   console.log(supplier)
@@ -23,5 +29,6 @@ async function getProductsWithSupplier(req, res) {
 
 module.exports = {
   getAllSuppliers,
+  getNewSupplier,
   getProductsWithSupplier
 }
