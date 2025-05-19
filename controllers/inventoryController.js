@@ -11,7 +11,7 @@ const getProductsNewForm = expressAsyncHandler(async (req, res) => {
   const categories = await db.getAllCategories()
   const suppliers = await db.getAllSuppliers()
 
-  res.render("inventory/productsForm", {
+  res.render("inventory/productsNewForm", {
     title: "New Product Registry",
     categories: categories,
     suppliers: suppliers
@@ -19,7 +19,7 @@ const getProductsNewForm = expressAsyncHandler(async (req, res) => {
 })
 
 const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
-  res.render("inventory/shipmentForm", {
+  res.render("inventory/shipmentNewForm", {
     title: "New Shipment Registry"
   })
 })
