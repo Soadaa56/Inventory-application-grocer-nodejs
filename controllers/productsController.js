@@ -1,5 +1,5 @@
-const expressAsyncHandler = require("express-async-handler")
 const db = require("../db/queries")
+const expressAsyncHandler = require("express-async-handler")
 
 const getAllProducts = expressAsyncHandler(async (req, res) => {
   const products = await db.getAllProducts()
