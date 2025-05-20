@@ -30,7 +30,7 @@ const getNewProductForm = expressAsyncHandler(async (req, res) => {
   })
 })
 
-const postNewProductForm = expressAsyncHandler(async (req, res) => {
+const postNewProduct = expressAsyncHandler(async (req, res) => {
   const product = req.body
 
   console.log(product)
@@ -42,5 +42,6 @@ module.exports = {
   getAllProducts,
   getProduct,
   getNewProductForm,
-  postNewProductForm
+  postNewProduct,
+  deleteProduct
 }

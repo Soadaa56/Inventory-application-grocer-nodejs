@@ -40,6 +40,13 @@ const postProductsEditForm = expressAsyncHandler(async (req, res) => {
   res.status(200).redirect(`/products/show/${product.productId}`)
 })
 
+const deleteProduct = expressAsyncHandler(async (req, res) => {
+  const { productId } = req.params
+
+  await db.deleteProductWithId(productId)
+  res.status(200).redirect("/products")
+})
+
 const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
   res.render("inventory/shipmentNewForm", {
     title: "New Shipment Registry"
@@ -51,5 +58,6 @@ module.exports = {
   getProductsNewForm,
   getProductsEditFormWithId,
   postProductsEditForm,
+  deleteProduct,
   getShipmentNewForm
 }
