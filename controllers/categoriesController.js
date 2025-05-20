@@ -6,7 +6,7 @@ async function getAllCategories(req, res) {
   
   res.status(200).render("categories/index", {
     title: "Categories",
-    categories: categories
+    categories
   })
 }
 
@@ -22,7 +22,7 @@ const getCategory = expressAsyncHandler(async (req, res) => {
 
   res.status(200).render("categories/edit", {
     title: category.name,
-    category: category
+    category
   })
 })
 
@@ -40,7 +40,7 @@ async function getProductsWithCategory(req, res) {
 
   res.status(200).render("categories/show", {
     title: productsByCategory[0].category_name,
-    productsByCategory : productsByCategory 
+    productsByCategory
   })
 }
 

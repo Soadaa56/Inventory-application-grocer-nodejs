@@ -6,7 +6,7 @@ const getAllSuppliers = expressAsyncHandler(async (req, res) => {
 
   res.status(200).render("suppliers/index", {
     title: "Suppliers",
-    suppliers: suppliers
+    suppliers
   })
 })
 
@@ -22,7 +22,7 @@ const getSupplier = expressAsyncHandler(async (req, res) => {
 
   res.status(200).render("suppliers/edit", {
     title: supplier.name,
-    supplier: supplier
+    supplier
   })
 })
 
@@ -40,7 +40,7 @@ const getProductsWithSupplier = expressAsyncHandler(async (req, res) => {
 
   res.status(200).render("suppliers/show", {
     title: productsBySupplier[0].supplier_name,
-    productsBySupplier: productsBySupplier
+    productsBySupplier
   })
 })
 

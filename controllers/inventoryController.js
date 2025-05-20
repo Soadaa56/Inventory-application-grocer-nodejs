@@ -13,8 +13,8 @@ const getProductsNewForm = expressAsyncHandler(async (req, res) => {
 
   res.render("inventory/productsNewForm", {
     title: "New Product Registry",
-    categories: categories,
-    suppliers: suppliers
+    categories,
+    suppliers
   })
 })
 

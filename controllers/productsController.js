@@ -5,7 +5,7 @@ const getAllProducts = expressAsyncHandler(async (req, res) => {
   const products = await db.getAllProducts()
   res.status(200).render("products/index", {
     title: "All Products",
-    products: products
+    products
   })
 })
 
@@ -15,7 +15,7 @@ const getProduct = expressAsyncHandler(async (req, res) => {
 
   res.status(200).render("products/show", {
     title: product.name,
-    product: product
+    product
   })
 })
 
