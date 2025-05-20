@@ -5,7 +5,7 @@
 <form method="POST" action="/products/new">
   <div class="form-field">
     <label for="productName">Product Name: </label>
-    <input type="text" name="productName" id="productName">
+    <input type="text" name="productName" id="productName" autofocus>
   </div>
   <div class="form-field">
     <label for="productSize">Product Size: </label>
@@ -35,6 +35,7 @@
       <% }); %>
     </select>
   </div>
+  <input type="submit" value="Register New Product" class="btn btn-green">
 </form>
 
 <%- include("../partials/footer") %>

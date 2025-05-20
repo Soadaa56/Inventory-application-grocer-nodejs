@@ -4,8 +4,10 @@
 
 <div>
   <form method="POST" action="/suppliers/edit/<%- supplier.id %>">
-    <label for="supplierName">Supplier Name: </label>
-    <input type="text" name="supplierName" id="supplierName" value="<%- supplier.name %>">
+    <div class="form-field">
+      <label for="supplierName">Supplier Name: </label>
+      <input type="text" name="supplierName" id="supplierName" value="<%- supplier.name %>" autofocus>
+    </div>
     <input type="submit" value="Edit Supplier" class="btn btn-green">
   </form>
 </div>
