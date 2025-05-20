@@ -6,16 +6,41 @@
   <form action="/inventory/products/edit/<%- product.id %>">
     <div class="form-field">
       <label for="productName">Product Name: </label>
-      <input type="text" name="productName" id="productName" class="<%- product.name%>">
+      <input type="text" name="productName" id="productName" value="<%- product.name%>">
     </div>
     
-    <label for="productSize">Product Size: </label>
+    <div class="form-field">
+      <label for="productSize">Product Size: </label>
+      <input type="text" name="productSize" id="productSize" value="<%- product.size %>">
+    </div>
 
-    <label for="productPrice">Product Price: </label>
+    <div class="form-field">
+      <label for="productPrice">Product Price: $</label>
+      <input type="text" name="productPrice" id="productPrice" value="<%- product.price %>">
+    </div>
 
-    <label for="productCategory">Product Category: </label>
+    <div class="form-field">
+      <label for="productSku">Product Sku: </label>
+      <input type="text" name="productSku" id="ProductSku" value="<%- product.sku %>">
+    </div>
 
-    <label for="productSupplier">Product Supplier: </label>
+    <div class="form-field">
+      <label for="productCategory">Product Category: </label>
+      <select name="productCategory" id="productCategory">
+        <% categories.forEach(category => { %>
+          <option value="<%- category.name %>"><%- category.name %></option>
+        <% }); %>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="productSupplier">Product Supplier: </label>
+      <select name="productSupplier" id="productSupplier">
+        <% suppliers.forEach(supplier => { %>
+          <option value="<%- supplier.name %>"><%- supplier.name %></option>
+        <% }) %>
+      </select>
+    </div>
 
     <input type="submit" value="Edit Product" class="btn btn-green">
   </form>

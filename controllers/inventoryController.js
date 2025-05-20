@@ -21,10 +21,14 @@ const getProductsNewForm = expressAsyncHandler(async (req, res) => {
 const getProductsEditFormWithId = expressAsyncHandler(async (req, res) => {
   const { productId } = req.params
   const product = await db.getProductWithId(productId)
+  const categories = await db.getAllCategories()
+  const suppliers = await db.getAllSuppliers()
 
   res.render("inventory/productsEditForm", {
     title: product.name,
-    product: product
+    product,
+    categories,
+    suppliers
   })
 })
 
