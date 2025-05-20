@@ -20,6 +20,20 @@ async function getProductWithId(productId) {
   return result.rows[0]
 }
 
+async function insertNewProduct(product) {
+  await pool.query(`
+    INSERT INTO products (name, size, price, sku, category_id, supplier_id)
+    VALUES ($1, $2, $3, $4, $5, $6);
+    `, [
+      product.productName,
+      product.productSize,
+      product.productPrice,
+      product.productSku,
+      product.productCategory,
+      product.productSupplier
+    ])
+}
+
 async function getAllCategories() {
   const { rows } = await pool.query("SELECT * FROM categories;")
   return rows
@@ -85,6 +99,7 @@ async function getProductsWithSupplier(supplier) {
 module.exports = {
   getAllProducts,
   getProductWithId,
+  insertNewProduct,
   getAllCategories,
   getCategoryWithId,
   insertNewCategory,
