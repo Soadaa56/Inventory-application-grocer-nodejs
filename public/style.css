@@ -81,11 +81,23 @@ h1 {
 .inventory-index-new-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px;
+}
+
+.inventory-index-new-section-header {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  margin: 10px;
+  width: 100%;
 }
 
 .inventory-index-btn > .btn {
   background-color: darkslateblue;
   color: lightgoldenrodyellow;
+  width: 250px;
+  text-align: center;
+  padding: 0.3rem;
 }
 
 .nav-bar {
