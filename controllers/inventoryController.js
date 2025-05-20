@@ -18,7 +18,7 @@ const getProductsNewForm = expressAsyncHandler(async (req, res) => {
   })
 })
 
-const getProductsEditFormWithId = (async (req, res) => {
+const getProductsEditFormWithId = expressAsyncHandler(async (req, res) => {
   const { productId } = req.params
   const product = await db.getProductWithId(productId)
 
