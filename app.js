@@ -35,7 +35,6 @@ app.use("/suppliers", suppliersRouter)
 app.use((err, req, res, next) => {
   console.log("Below is express-async-handler middleware err.stack")
   console.error(err.stack);
-  console.log("Above is express-async-handler middleware err.stack")
     res.status(500).send('Internal Server Error');
 });
 

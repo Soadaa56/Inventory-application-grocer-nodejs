@@ -34,6 +34,22 @@ async function insertNewProduct(product) {
     ])
 }
 
+async function updateProduct(product) {
+  await pool.query(`
+    UPDATE products
+    SET name = $1, size = $2, price = $3, sku = $4, category_id = $5, supplier_id = $6
+    WHERE id = $7;
+    `, [
+      product.productName,
+      product.productSize,
+      product.productPrice,
+      product.productSku,
+      product.productCategory,
+      product.productSupplier,
+      product.productId
+    ])
+}
+
 async function getAllCategories() {
   const { rows } = await pool.query("SELECT * FROM categories;")
   return rows
@@ -100,6 +116,7 @@ module.exports = {
   getAllProducts,
   getProductWithId,
   insertNewProduct,
+  updateProduct,
   getAllCategories,
   getCategoryWithId,
   insertNewCategory,

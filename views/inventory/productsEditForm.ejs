@@ -3,7 +3,8 @@
 <h1><%= locals.title %></h1>
 
 <div>
-  <form action="/inventory/products/edit/<%- product.id %>">
+  <form method="POST" action="/inventory/products/edit/<%- product.id %>">
+    <input type="hidden" name="productId" value="<%- product.id %>">
     <div class="form-field">
       <label for="productName">Product Name: </label>
       <input type="text" name="productName" id="productName" value="<%- product.name%>" autofocus>
@@ -28,7 +29,7 @@
       <label for="productCategory">Product Category: </label>
       <select name="productCategory" id="productCategory">
         <% categories.forEach(category => { %>
-          <option value="<%- category.name %>"><%- category.name %></option>
+          <option value="<%- category.id %>"><%- category.name %></option>
         <% }); %>
       </select>
     </div>
@@ -37,7 +38,7 @@
       <label for="productSupplier">Product Supplier: </label>
       <select name="productSupplier" id="productSupplier">
         <% suppliers.forEach(supplier => { %>
-          <option value="<%- supplier.name %>"><%- supplier.name %></option>
+          <option value="<%- supplier.id %>"><%- supplier.name %></option>
         <% }) %>
       </select>
     </div>

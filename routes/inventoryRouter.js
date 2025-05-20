@@ -4,9 +4,8 @@ const inventoryController = require("../controllers/inventoryController")
 
 inventoryRouter.get("/", inventoryController.getInventoryIndex)
 
-inventoryRouter.get("/products/new", inventoryController.getProductsNewForm)
-
 inventoryRouter.get("/products/edit/:productId", inventoryController.getProductsEditFormWithId)
+inventoryRouter.post("/products/edit/:productId", inventoryController.postProductsEditForm)
 
 inventoryRouter.get("/shipment/new", inventoryController.getShipmentNewForm)
 

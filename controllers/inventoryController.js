@@ -32,6 +32,14 @@ const getProductsEditFormWithId = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const postProductsEditForm = expressAsyncHandler(async (req, res) => {
+  const product = req.body
+  console.log(product)
+
+  await db.updateProduct(product)
+  res.status(200).redirect(`/products/show/${product.productId}`)
+})
+
 const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
   res.render("inventory/shipmentNewForm", {
     title: "New Shipment Registry"
@@ -42,5 +50,6 @@ module.exports = {
   getInventoryIndex,
   getProductsNewForm,
   getProductsEditFormWithId,
+  postProductsEditForm,
   getShipmentNewForm
 }
