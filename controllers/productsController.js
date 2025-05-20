@@ -19,7 +19,19 @@ const getProduct = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const getNewProductForm = expressAsyncHandler(async (req, res) => {
+  const categories = await db.getAllCategories()
+  const suppliers = await db.getAllSuppliers()
+
+  res.render("products/new", {
+    title: "New Product",
+    categories,
+    suppliers
+  })
+})
+
 module.exports = {
   getAllProducts,
-  getProduct
+  getProduct,
+  getNewProductForm
 }

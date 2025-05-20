@@ -1,0 +1,40 @@
+<%- include("../partials/header") %>
+
+<h1><%= locals.title %></h1>
+
+<form method="POST" action="/products/new">
+  <div class="form-field">
+    <label for="productName">Product Name: </label>
+    <input type="text" name="productName" id="productName">
+  </div>
+  <div class="form-field">
+    <label for="productSize">Product Size: </label>
+    <input type="text" name="productSize" id="productSize">
+  </div>
+  <div class="form-field">
+    <label for="productPrice">Product Price: $</label>
+    <input type="text" name="productPrice" id="productPrice">
+  </div>
+  <div class="form-field">
+    <label for="productSku">Product Sku: </label>
+    <input type="text" name="productSku" id="productSku">
+  </div>
+  <div class="form-field">
+    <label for="productCategory">Product Category: </label>
+    <select name="productCategory" id="productCategory">
+      <% categories.forEach(category => { %>
+        <option value="<%- category.name %>"><%- category.name %></option>
+      <% }); %>
+    </select>
+  </div>
+  <div class="form-field">
+    <label for="productSupplier">Product Supplier: </label>
+    <select name="productSupplier" id="productSupplier">
+      <% suppliers.forEach(supplier => { %>
+        <option value="<%- supplier.name %>"><%- supplier.name %></option>
+      <% }); %>
+    </select>
+  </div>
+</form>
+
+<%- include("../partials/footer") %>

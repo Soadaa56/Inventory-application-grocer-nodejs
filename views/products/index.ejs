@@ -1,10 +1,12 @@
 <%- include("../partials/header") %>
 
 <h1><%= locals.title %></h1>
+<h4><a href="/products/new" class="btn">Add New Product</a></h4>
 
 <div class="products-item-wrapper">
   <% products.forEach(product => { %>
     <div class="product-item">
+      <%- product.id %>:
       <%- product.name %>,
       <%- product.size %>,
       $<%- product.price %>,
