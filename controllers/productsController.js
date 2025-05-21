@@ -38,6 +38,13 @@ const postNewProduct = expressAsyncHandler(async (req, res) => {
   res.status(200).redirect("/products")
 })
 
+const deleteProduct = expressAsyncHandler(async (req, res) => {
+  const { productId } = req.params
+
+  await db.deleteProductWithId(productId)
+  res.status(200).redirect("/products")
+})
+
 module.exports = {
   getAllProducts,
   getProduct,
