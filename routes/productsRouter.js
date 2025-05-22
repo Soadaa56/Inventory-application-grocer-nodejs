@@ -11,6 +11,6 @@ productsRouter.get("/show/:productId", productsController.getProduct)
 
 productsRouter.get("/edit/:productId", productsController.getProductsEditFormWithId)
 productsRouter.post("/edit/:productId", productsController.postProductsEditForm)
-productsRouter.delete("/edit/:productId", productsController.deleteProduct)
+productsRouter.post("/delete/:productId", productsController.deleteProduct)
 
 module.exports = productsRouter
