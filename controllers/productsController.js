@@ -24,7 +24,7 @@ const getNewProductForm = expressAsyncHandler(async (req, res) => {
   const suppliers = await db.getAllSuppliers()
 
   res.render("products/new", {
-    title: "New Product",
+    title: "Register New Product",
     categories,
     suppliers
   })
@@ -36,6 +36,28 @@ const postNewProduct = expressAsyncHandler(async (req, res) => {
   console.log(product)
   await db.insertNewProduct(product)
   res.status(200).redirect("/products")
+})
+
+const getProductsEditFormWithId = expressAsyncHandler(async (req, res) => {
+  const { productId } = req.params
+  const product = await db.getProductWithId(productId)
+  const categories = await db.getAllCategories()
+  const suppliers = await db.getAllSuppliers()
+
+  res.render("products/edit", {
+    title: product.name,
+    product,
+    categories,
+    suppliers
+  })
+})
+
+const postProductsEditForm = expressAsyncHandler(async (req, res) => {
+  const product = req.body
+  console.log(product)
+
+  await db.updateProduct(product)
+  res.status(200).redirect(`/products/show/${product.productId}`)
 })
 
 const deleteProduct = expressAsyncHandler(async (req, res) => {
@@ -50,5 +72,7 @@ module.exports = {
   getProduct,
   getNewProductForm,
   postNewProduct,
+  getProductsEditFormWithId,
+  postProductsEditForm,
   deleteProduct
 }
