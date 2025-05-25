@@ -2,12 +2,22 @@
 
 <h1><%= locals.title %></h1>
 
-<form method="POST" action="/inventory/shipments/new">
-  <div class="form-field">
-    <label for="shipmentDate">Shipment Date: </label>
-    <input type="date" name="shipmentDate" id="shipmentDate" autofocus>
+<form method="POST" action="/inventory/shipments/new" class="shipment-form">
+  <div class="shipment-form-supplier">
+    <label for="supplierName">Select Supplier: </label>
+    <select name="supplierId" id="supplierId">
+      <option value=""></option>
+      <% suppliers.forEach(supplier => { %>
+        <option value="<%- supplier.id %>"><%- supplier.name %></option>
+      <% }); %>
+    </select>
   </div>
-  <input type="submit" value="Register New Shipment">
+
+  <div class="shipment-form-products">
+
+  </div>
+
+  <input type="submit" value="Click to Finalize Shipment Details" class="btn">
 </form>
 
 <%- include("../partials/footer") %>

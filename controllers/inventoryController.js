@@ -8,8 +8,11 @@ const getInventoryIndex = expressAsyncHandler(async (req, res) => {
 })
 
 const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
+  const suppliers = await db.getAllSuppliers()
+
   res.render("inventory/shipmentNewForm", {
-    title: "New Shipment Registry"
+    title: "New Shipment Registry",
+    suppliers
   })
 })
 
