@@ -1,20 +1,20 @@
 const expressAsyncHandler = require("express-async-handler")
 const db = require("../db/queries")
 
-async function getAllCategories(req, res) {
+const getAllCategories = expressAsyncHandler(async (req, res) => {
   const categories = await db.getAllCategories()
   
   res.status(200).render("categories/index", {
     title: "Categories",
     categories
   })
-}
+})
 
-async function getNewCategory(req, res) {
+const getNewCategory = expressAsyncHandler(async (req, res) => {
   res.render("categories/new", {
     title: "Add New Category"
   })
-}
+})
 
 const getCategory = expressAsyncHandler(async (req, res) => {
   const { categoryId } = req.params
@@ -34,7 +34,7 @@ const postNewCategory = expressAsyncHandler(async (req, res) => {
   res.redirect("/categories")
 })
 
-async function getProductsWithCategory(req, res) {
+const getProductsWithCategory = expressAsyncHandler(async (req, res) => {
   const { category } = req.params
   const productsByCategory = await db.getProductsWithCategory(category)
 
@@ -42,7 +42,7 @@ async function getProductsWithCategory(req, res) {
     title: productsByCategory[0].category_name,
     productsByCategory
   })
-}
+})
 
 module.exports = {
   getAllCategories,
