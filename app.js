@@ -11,6 +11,7 @@ const productsRouter = require("./routes/productsRouter")
 const categoriesRouter = require("./routes/categoriesRouter")
 const inventoryRouter = require("./routes/inventoryRouter")
 const suppliersRouter = require("./routes/suppliersRouter")
+const apiRouter = require("./routes/apiRouter")
 
 app.set('view engine', 'ejs')
 app.use(express.static(assetsPath));
@@ -25,11 +26,7 @@ app.use("/products", productsRouter)
 app.use("/categories", categoriesRouter)
 app.use("/inventory", inventoryRouter)
 app.use("/suppliers", suppliersRouter)
-
-// I want it to be obvious when this middleware is used
-// wrapping functions with express-async-handler seem to be the proper way of doing things
-// but wrapping functions with this middleware isn't something I'm used to doing and 
-// is 'slightly' annoying so I would feel better when this middleware is called 
+app.use("/api", apiRouter)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
