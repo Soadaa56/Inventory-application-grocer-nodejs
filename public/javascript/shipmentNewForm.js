@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const checkbox = document.createElement('input')
       checkbox.type = 'checkbox'
-      checkbox.name = 'productIds[]'
+      checkbox.name = 'productIds'
       checkbox.value = product.id
       checkbox.id = `product-${product.id}`
 
