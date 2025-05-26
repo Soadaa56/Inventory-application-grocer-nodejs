@@ -16,6 +16,7 @@ const apiRouter = require("./routes/apiRouter")
 app.set('view engine', 'ejs')
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use((req, res, next) => {
   res.locals.links = links
   next();
