@@ -16,7 +16,20 @@ const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const getShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
+  const { supplierId } = req.query
+  const { productIds } = req.query
+
+  console.log(supplierId)
+  console.log(productIds)
+
+  res.status(200).render("inventory/shipmentDetailsForm", {
+    title: "Finalize Shipment Details"
+  })
+})
+
 module.exports = {
   getInventoryIndex,
-  getShipmentNewForm
+  getShipmentNewForm,
+  getShipmentDetailsForm
 }
