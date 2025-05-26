@@ -119,7 +119,7 @@ async function getProductsWithSupplier(supplier) {
   return rows
 }
 
-async function fetchProductsWithSupplierId(supplierId) {
+async function fetchAllProductsWithSupplierId(supplierId) {
   const { rows } = await pool.query(`
     SELECT *
     FROM products
@@ -142,5 +142,5 @@ module.exports = {
   getSupplierWithId,
   insertNewSupplier,
   getProductsWithSupplier,
-  fetchProductsWithSupplierId
+  fetchAllProductsWithSupplierId
 } 
