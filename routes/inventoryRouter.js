@@ -6,5 +6,6 @@ inventoryRouter.get("/", inventoryController.getInventoryIndex)
 
 inventoryRouter.get("/shipment/new", inventoryController.getShipmentNewForm)
 inventoryRouter.get("/shipment/submit", inventoryController.getShipmentDetailsForm)
+inventoryRouter.post("/shipment/submit", inventoryController.postShipmentDetailsForm)
 
 module.exports = inventoryRouter

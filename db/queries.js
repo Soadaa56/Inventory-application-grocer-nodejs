@@ -137,6 +137,9 @@ async function fetchProductsWithSupplierId(supplierId, productIds) {
     `, [supplierId, productIds])
   return rows
 }
+async function insertNewShipment() {
+  await pool.query()
+}
 
 module.exports = {
   getAllProducts,
@@ -153,5 +156,6 @@ module.exports = {
   insertNewSupplier,
   getProductsWithSupplier,
   fetchAllProductsWithSupplierId,
-  fetchProductsWithSupplierId
+  fetchProductsWithSupplierId,
+  insertNewShipment
 } 

@@ -30,8 +30,17 @@ const getShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const postShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
+  const shipmentOrder = req.body
+  await db.insertNewShipment(shipmentOrder)
+  console.log(body)
+
+  res.status(200).redirect("/inventory/")
+})
+
 module.exports = {
   getInventoryIndex,
   getShipmentNewForm,
-  getShipmentDetailsForm
+  getShipmentDetailsForm,
+  postShipmentDetailsForm
 }
