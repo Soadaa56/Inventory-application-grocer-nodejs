@@ -137,8 +137,42 @@ async function fetchProductsWithSupplierId(supplierId, productIds) {
     `, [supplierId, productIds])
   return rows
 }
-async function insertNewShipment() {
-  await pool.query()
+
+async function insertNewShipment(shipmentOrder) {
+  const client = await pool.connect()
+
+  try {
+    await client.query('BEGIN')
+
+    // 1. Insert into shipments and return the new id
+    const shipmentResult = await client.query(`
+      INSERT INTO shipments (supplier_id, shipment_date, shipment_time, comments)
+      VALUES ($1, $2, $3, $4)
+      RETURNING id
+    `, [
+      shipmentOrder.supplierId,
+      shipmentOrder.shipmentDate,
+      shipmentOrder.shipmentTime,
+      shipmentOrder.comments
+    ])
+
+    const shipmentId = shipmentResult.rows[0].id
+
+    // 2. Insert each product into shipment_products
+    for (const product of shipmentOrder.shipmentProducts) {
+      await client.query(`
+        INSERT INTO shipment_products (shipment_id, product_id, quantity)
+        VALUES ($1, $2, $3)
+      `, [shipmentId, product.productId, product.quantity])
+    }
+
+    await client.query('COMMIT')
+  } catch (error) {
+    await client.query('ROLLBACK')
+    throw error
+  } finally {
+    client.release()
+  }
 }
 
 module.exports = {

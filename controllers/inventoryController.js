@@ -21,7 +21,6 @@ const getShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
   let productIds =  req.query.productIds || []
   const supplier = await db.getSupplierWithId(supplierId)
   const products = await db.fetchProductsWithSupplierId(supplierId, productIds)
-  console.log(products)
 
   res.status(200).render("inventory/shipmentDetailsForm", {
     title: "Finalize Shipment Details",
@@ -32,8 +31,8 @@ const getShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
 
 const postShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
   const shipmentOrder = req.body
+  
   await db.insertNewShipment(shipmentOrder)
-  console.log(body)
 
   res.status(200).redirect("/inventory/")
 })

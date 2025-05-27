@@ -19,8 +19,11 @@
   <h5 class="shipment-final-quantity-header">Record Quantity of Products Recieved</h5>
   <% products.forEach(product => { %>
     <div class="form-field">
-      <label for="shipmentProductQuantity-<%- product.id %>"><%- product.name %>, <%- product.size %>: </label>
-      <input type="number" name="shipmentProductQuantity" id="shipmentProductQuantity-<%- product.id %>" value="0">
+      <label for="shipmentProductQuantity-<%- product.id %>">
+        <%- product.name %>, <%- product.size %>: 
+      </label>
+      <input type="hidden" name="shipmentProducts[<%- product.id %>][productId]" value="<%- product.id %>">
+      <input type="number" name="shipmentProducts[<%- product.id %>][Quantity]" id="shipmentProductQuantity-<%- product.id %>" value="0">
     </div>
   <% }); %>
   <br>
