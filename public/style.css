@@ -3,6 +3,10 @@ html {
   font-size: 20px;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 footer {
   bottom: 0;
   display: flex;
