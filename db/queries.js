@@ -144,7 +144,7 @@ async function insertNewShipment(shipmentOrder) {
     await client.query('BEGIN');
     const shipmentInsertResult = await client.query(
       `
-      INSERT INTO shipments (supplier_id, shipment_date, shipment_time, comments)
+      INSERT INTO shipments (supplier_id, shipment_date, shipment_time, comments, order_number)
       VALUES ($1, $2, $3, $4)
       RETURNING id
       `,
@@ -153,6 +153,7 @@ async function insertNewShipment(shipmentOrder) {
         shipmentOrder.shipmentDate,
         shipmentOrder.shipmentTime,
         shipmentOrder.shipmentComments,
+        shipmentOrder.shipmentOrderNumber
       ]
     );
     const shipmentId = shipmentInsertResult.rows[0].id;
@@ -185,6 +186,10 @@ async function getAllShipments() {
   return rows
 }
 
+async function fetchShipmentOrderNumber() {
+  return "1001"
+}
+
 module.exports = {
   getAllProducts,
   getProductWithId,
@@ -202,5 +207,6 @@ module.exports = {
   fetchAllProductsWithSupplierId,
   fetchProductsWithSupplierId,
   insertNewShipment,
-  getAllShipments
+  getAllShipments,
+  fetchShipmentOrderNumber
 } 
