@@ -137,6 +137,7 @@ async function fetchProductsWithSupplierId(supplierId, productIds) {
     `, [supplierId, productIds])
   return rows
 }
+
 async function insertNewShipment(shipmentOrder) {
   const client = await pool.connect();
   try {
@@ -175,6 +176,15 @@ async function insertNewShipment(shipmentOrder) {
   }
 }
 
+async function getAllShipments() {
+  const { rows } = await pool.query(`
+    SELECT shipments.*, suppliers.name AS supplier_name
+    FROM shipments
+    LEFT JOIN suppliers ON shipments.supplier_id=suppliers.id;
+    `)
+  return rows
+}
+
 module.exports = {
   getAllProducts,
   getProductWithId,
@@ -191,5 +201,6 @@ module.exports = {
   getProductsWithSupplier,
   fetchAllProductsWithSupplierId,
   fetchProductsWithSupplierId,
-  insertNewShipment
+  insertNewShipment,
+  getAllShipments
 } 

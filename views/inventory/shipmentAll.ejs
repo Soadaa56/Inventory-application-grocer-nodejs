@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+
+<h1><%= locals.title %></h1>
+
+<% shipments.forEach(shipment => { %>
+  <div>
+    <pre><%= JSON.stringify(shipment, null, 2) %></pre>
+    <%- shipment.id %>
+    <%- shipment.shipment_date %>
+    <%- shipment.shipment_time %>
+    <%- shipment.supplier_name %>
+  </div>
+<% }); %>
+
+<%- include("../partials/footer") %>
