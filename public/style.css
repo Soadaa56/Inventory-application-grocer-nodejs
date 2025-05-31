@@ -58,6 +58,24 @@ h1 {
   text-align: center;
 }
 
+.form-field {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 200px 300px;
+  align-items: center;
+}
+
+.form-field input {
+  color: blue;
+  border: 5px solid lightpink;
+  margin-left: 5rem;
+}
+
+.form-field select {
+  color: blue;
+  border: 5px solid lightpink;
+}
+
 .green {
   color: green;
 }
@@ -140,11 +158,20 @@ h1 {
   color: red;
 }
 
+.shipment-final-date-time {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  border-bottom: 5px solid black;
+}
+
 .shipment-final-details-header {
   display: flex;
   width: 100%;
-  justify-content: space-around;
-  padding: 0.5rem;
+  justify-content: start;
+  margin: 2rem 0;
+  padding: 0 2rem;
+  gap: 10rem;
 }
 
 .shipment-final-quantity-header {

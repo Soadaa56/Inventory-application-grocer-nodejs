@@ -5,21 +5,33 @@
 <!-- Needs form validation -->
 <form method="post" action="/inventory/shipment/submit" >
   <div class="shipment-final-details-header">
-    <div><label for="shipmentOrderNumber">Shipment Order #: <%- shipmentOrder.number %></label></div>
-    <input type="hidden" name="shipmentOrderNumber" id="shipmentOrderNumber" value="<%- shipmentOrder.number %>" >
-    <div><label for="shipmentSupplier">Supplier: <%- supplier.name %></label></div>
-    <input type="hidden" name="supplierId" id="supplierId" value="<%- supplier.id %>">
-    <div><label for="shipmentSupplierOrderNumber">Provided Supplier Order Number: </label></div>
-    <input type="text" name="shipmentSupplierOrderNumber" id="shipmentSupplierOrderNumber">
+    <div class="form-field">
+      <label for="shipmentSupplierOrderNumber">Provided Supplier Order Number: </label>
+      <input type="text" name="shipmentSupplierOrderNumber" id="shipmentSupplierOrderNumber" autofocus>
+    </div>
+
+    <div class="form-field">
+      <label for="supplierId">Supplier: <span style="color: blue;"><%- supplier.name %></span></label>
+      <input type="hidden" name="supplierId" id="supplierId" value="<%- supplier.id %>">
+    </div>
+
+    <div class="form-field">
+      <label for="shipmentOrderNumber">Shipment Order #: <span style="color: blue;"><%- shipmentOrder.number %></span></label>
+      <input type="hidden" name="shipmentOrderNumber" id="shipmentOrderNumber" value="<%- shipmentOrder.number %>" >
+    </div>  
   </div>
-  <div class="form-field">
-    <label for="shipmentDate">Shipment Date: </label>
-    <input type="date" name="shipmentDate" id="shipmentDate" required>
+
+  <div class="shipment-final-date-time">
+    <div class="form-field">
+      <label for="shipmentDate">Shipment Date: </label>
+      <input type="date" name="shipmentDate" id="shipmentDate" required>
+    </div>
+    <div class="form-field">
+      <label for="shipmentTime">Shipment Time: </label>
+      <input type="time" name="shipmentTime" id="shipmentTime" required>
+    </div>
   </div>
-  <div class="form-field">
-    <label for="shipmentTime">Shipment Time: </label>
-    <input type="time" name="shipmentTime" id="shipmentTime" required>
-  </div>
+
   <h5 class="shipment-final-quantity-header">Record Quantity of Products Recieved</h5>
   <% products.forEach(product => { %>
     <div class="form-field">
@@ -32,8 +44,10 @@
   <% }); %>
   <br>
 
-  <label for="shipmentComments">Comments: </label> <br>
-  <textarea name="shipmentComments" id="shipmentComments" cols="60" rows="10"></textarea>
+  <div style="margin-left: 1rem;">
+    <label for="shipmentComments">Comments: </label> <br>
+    <textarea name="shipmentComments" id="shipmentComments" cols="60" rows="10"></textarea>
+  </div>
   <br>
   <input type="submit" value="Register New Shipment" class="btn btn-green">
 </form>
