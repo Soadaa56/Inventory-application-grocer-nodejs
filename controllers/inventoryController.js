@@ -58,10 +58,20 @@ const getAllShipments = expressAsyncHandler(async (req, res) => {
   })
 })
 
+const getInventoryStock = expressAsyncHandler(async (req, res) => {
+  const inventoryStock = await db.getInventoryStock()
+
+  res.status(200).render("inventory/stock", {
+    title: "Inventory Stock",
+    inventoryStock
+  })
+})
+
 module.exports = {
   getInventoryIndex,
   getShipmentNewForm,
   getShipmentDetailsForm,
   postShipmentDetailsForm,
-  getAllShipments
+  getAllShipments,
+  getInventoryStock
 }

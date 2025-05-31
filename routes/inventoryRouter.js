@@ -10,4 +10,6 @@ inventoryRouter.post("/shipment/submit", inventoryController.postShipmentDetails
 
 inventoryRouter.get("/shipments/all", inventoryController.getAllShipments)
 
+inventoryRouter.get("/stock", inventoryController.getInventoryStock)
+
 module.exports = inventoryRouter

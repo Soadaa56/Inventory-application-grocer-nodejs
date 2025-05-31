@@ -198,6 +198,14 @@ async function fetchShipmentOrderNumber() {
   return lastOrderNumber + 1
 }
 
+async function getInventoryStock() {
+  const { rows } = await pool.query(`
+    SELECT *
+    FROM shipment_products
+    `)
+  return rows
+}
+
 module.exports = {
   getAllProducts,
   getProductWithId,
@@ -216,5 +224,6 @@ module.exports = {
   fetchProductsWithSupplierId,
   insertNewShipment,
   getAllShipments,
-  fetchShipmentOrderNumber
+  fetchShipmentOrderNumber,
+  getInventoryStock
 } 
