@@ -6,9 +6,11 @@
 <form method="post" action="/inventory/shipment/submit" >
   <div class="shipment-final-details-header">
     <div><label for="shipmentOrderNumber">Shipment Order #: <%- shipmentOrder.number %></label></div>
-    <input type="hidden" name="shipmentOrder" value="<%- shipmentOrder.number %>" >
+    <input type="hidden" name="shipmentOrderNumber" id="shipmentOrderNumber" value="<%- shipmentOrder.number %>" >
     <div><label for="shipmentSupplier">Supplier: <%- supplier.name %></label></div>
-    <input type="hidden" name="supplierId" value="<%- supplier.id %>">
+    <input type="hidden" name="supplierId" id="supplierId" value="<%- supplier.id %>">
+    <div><label for="shipmentSupplierOrderNumber">Provided Supplier Order Number: </label></div>
+    <input type="text" name="shipmentSupplierOrderNumber" id="shipmentSupplierOrderNumber">
   </div>
   <div class="form-field">
     <label for="shipmentDate">Shipment Date: </label>
