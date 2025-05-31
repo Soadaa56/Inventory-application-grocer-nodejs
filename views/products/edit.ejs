@@ -2,6 +2,7 @@
 
 <h1><%= locals.title %></h1>
 
+<!-- Needs form validation -->
 <div>
   <form method="POST" action="/inventory/products/edit/<%- product.id %>">
     <input type="hidden" name="productId" value="<%- product.id %>">
