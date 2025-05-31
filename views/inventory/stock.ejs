@@ -3,13 +3,16 @@
 <h1><%= locals.title %></h1>
 
 <div>
-  <p>TOTAL INVENTORY VALUE: $<%- totalInventoryValue %></p>
+  <p>TOTAL INVENTORY VALUE: $<%- totalInventoryValueRounded %></p>
 </div>
 
 <% inventoryStock.forEach(stock => { %>
   <div>
-    <%- stock.product_id %>
-    <%- stock.total_quantity %>
+    ID: <span style="color: blue;"><%- stock.product_id %></span>,
+    NAME: <span style="color: blue;"><%- stock.name %></span>,
+    SIZE: <span style="color: blue;"><%- stock.size %></span>,
+    STOCK QUANTITY: <span style="color: blue;"><%- stock.total_quantity %></span>,
+    TOTAL STOCK VALUE: <span style="color: blue;"><%- stock.total_product_value %></span>
   </div>
 <% }); %>
 
