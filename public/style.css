@@ -82,10 +82,16 @@ h1 {
   justify-content: center;
 }
 
-.inventory-index-new-section {
+.inventory-index-new-section-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);  
   grid-template-rows: 50px;
+  gap: 1rem;
+}
+
+.inventory-index-new-section-container :first-child {
+  grid-column: 1/ -1;
+  justify-self: center;
 }
 
 .inventory-index-new-section-header {
@@ -97,6 +103,7 @@ h1 {
 }
 
 .inventory-index-btn > .btn {
+  display: inline-block;
   background-color: darkslateblue;
   color: lightgoldenrodyellow;
   width: 250px;
