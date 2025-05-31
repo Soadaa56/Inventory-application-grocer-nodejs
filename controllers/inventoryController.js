@@ -33,9 +33,6 @@ const getShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
   const products = await db.fetchProductsWithSupplierId(supplierId, productIds)
   const shipmentOrder = await db.fetchShipmentOrderNumber()
 
-  console.log(supplierId)
-  console.log(productIds)
-
   res.status(200).render("inventory/shipmentDetailsForm", {
     title: "Finalize Shipment Details",
     products,
