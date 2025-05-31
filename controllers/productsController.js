@@ -33,7 +33,6 @@ const getNewProductForm = expressAsyncHandler(async (req, res) => {
 const postNewProduct = expressAsyncHandler(async (req, res) => {
   const product = req.body
 
-  console.log(product)
   await db.insertNewProduct(product)
   res.status(200).redirect("/products")
 })
@@ -54,7 +53,6 @@ const getProductsEditFormWithId = expressAsyncHandler(async (req, res) => {
 
 const postProductsEditForm = expressAsyncHandler(async (req, res) => {
   const product = req.body
-  console.log(product)
 
   await db.updateProduct(product)
   res.status(200).redirect(`/products/show/${product.productId}`)
