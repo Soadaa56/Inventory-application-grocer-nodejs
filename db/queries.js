@@ -188,7 +188,14 @@ async function getAllShipments() {
 }
 
 async function fetchShipmentOrderNumber() {
-  return "1001"
+  const { rows } = await pool.query(`
+    SELECT order_number
+    FROM shipments
+    ORDER BY id DESC
+    LIMIT 1
+    `)
+  const lastOrderNumber = rows[0]?.order_number ?? 999
+  return lastOrderNumber + 1
 }
 
 module.exports = {
