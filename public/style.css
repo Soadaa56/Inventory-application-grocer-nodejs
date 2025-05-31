@@ -129,6 +129,21 @@ h1 {
   padding: 0.3rem;
 }
 
+.inventory-index-shipment-section-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50px;
+}
+
+.inventory-index-shipment-section-header {
+  text-align: center;
+  font-size: 30px;
+  text-decoration: underline;
+  margin: 10px;
+  width: 100%;
+}
+
+
 .nav-bar {
   background-color: steelblue;
   border: 1px solid black;
