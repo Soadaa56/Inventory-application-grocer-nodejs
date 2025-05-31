@@ -73,13 +73,14 @@ const getInventoryStock = expressAsyncHandler(async (req, res) => {
         // product_id, total_quantity
       ...product,
         // id, name, size, price, category_name
-      total_product_value: quantity * price
+      total_product_value: Math.round(quantity * price * 100) / 100
     }
   })
 
   const totalInventoryValue = inventoryStock.reduce((sum, product) => {
     return sum + product.total_product_value
   }, 0)
+  const totalInventoryValueRounded = totalInventoryValue.toFixed(2)
 
   console.log(inventoryStock)
   console.log(totalInventoryValue)
@@ -87,7 +88,7 @@ const getInventoryStock = expressAsyncHandler(async (req, res) => {
   res.status(200).render("inventory/stock", {
     title: "Inventory Stock",
     inventoryStock,
-    totalInventoryValue
+    totalInventoryValueRounded
   })
 })
 
