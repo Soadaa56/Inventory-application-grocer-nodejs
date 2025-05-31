@@ -144,8 +144,8 @@ async function insertNewShipment(shipmentOrder) {
     await client.query('BEGIN');
     const shipmentInsertResult = await client.query(
       `
-      INSERT INTO shipments (supplier_id, shipment_date, shipment_time, comments, order_number)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO shipments (supplier_id, shipment_date, shipment_time, comments, order_number, supplier_order_number)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
       `,
       [
@@ -153,7 +153,8 @@ async function insertNewShipment(shipmentOrder) {
         shipmentOrder.shipmentDate,
         shipmentOrder.shipmentTime,
         shipmentOrder.shipmentComments,
-        shipmentOrder.shipmentOrderNumber
+        shipmentOrder.shipmentOrderNumber,
+        shipmentOrder.shipmentSupplierOrderNumber
       ]
     );
     const shipmentId = shipmentInsertResult.rows[0].id;
