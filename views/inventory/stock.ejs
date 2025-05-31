@@ -2,6 +2,15 @@
 
 <h1><%= locals.title %></h1>
 
+<div>
+  <p>TOTAL INVENTORY VALUE: $<%- totalInventoryValue %></p>
+</div>
 
+<% inventoryStock.forEach(stock => { %>
+  <div>
+    <%- stock.product_id %>
+    <%- stock.total_quantity %>
+  </div>
+<% }); %>
 
 <%- include("../partials/footer") %>

@@ -59,11 +59,35 @@ const getAllShipments = expressAsyncHandler(async (req, res) => {
 })
 
 const getInventoryStock = expressAsyncHandler(async (req, res) => {
-  const inventoryStock = await db.getInventoryStock()
+  const allShipmentProducts = await db.getInventoryStock()
+  const productIds = allShipmentProducts.map(product => product.product_id)
+  const productInfo = await db.fetchProductsWithIds(productIds)
+
+  const inventoryStock = allShipmentProducts.map(stock => {
+    const product = productInfo.find(p => p.id === stock.product_id)
+    const quantity = Number(stock.total_quantity)
+    const price = Number(product.price)
+
+    return {
+      ...stock, 
+        // product_id, total_quantity
+      ...product,
+        // id, name, size, price, category_name
+      total_product_value: quantity * price
+    }
+  })
+
+  const totalInventoryValue = inventoryStock.reduce((sum, product) => {
+    return sum + product.total_product_value
+  }, 0)
+
+  console.log(inventoryStock)
+  console.log(totalInventoryValue)
 
   res.status(200).render("inventory/stock", {
     title: "Inventory Stock",
-    inventoryStock
+    inventoryStock,
+    totalInventoryValue
   })
 })
 

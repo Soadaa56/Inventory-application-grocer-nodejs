@@ -200,9 +200,22 @@ async function fetchShipmentOrderNumber() {
 
 async function getInventoryStock() {
   const { rows } = await pool.query(`
-    SELECT *
+    SELECT product_id, SUM(quantity) AS total_quantity
     FROM shipment_products
+    GROUP BY product_id
     `)
+  return rows
+}
+
+async function fetchProductsWithIds(productIds) {
+  const { rows } = await pool.query(`
+    SELECT products.id, products.name, products.size, products.price, 
+      categories.name AS category_name
+    FROM products
+    LEFT JOIN categories
+    ON products.category_id = categories.id
+    WHERE products.id = ANY($1)
+    `, [productIds])
   return rows
 }
 
@@ -225,5 +238,6 @@ module.exports = {
   insertNewShipment,
   getAllShipments,
   fetchShipmentOrderNumber,
-  getInventoryStock
+  getInventoryStock,
+  fetchProductsWithIds
 } 
