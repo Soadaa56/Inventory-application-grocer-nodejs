@@ -18,10 +18,23 @@ const getShipmentNewForm = expressAsyncHandler(async (req, res) => {
 
 const getShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
   const { supplierId } = req.query
-  let productIds =  req.query.productIds || []
+  let productIds = []
+  let formProductIds = req.query.productIds
+  // Is it clean code to move the below to a seperate function?
+  // Selecting only one product was causing an error (data was a string and not array of strings)
+  // Allows one product to be selected
+  if (Array.isArray(formProductIds)) {
+    productIds = formProductIds
+  } else {
+    productIds = [formProductIds]
+  }
+
   const supplier = await db.getSupplierWithId(supplierId)
   const products = await db.fetchProductsWithSupplierId(supplierId, productIds)
   const shipmentOrder = await db.fetchShipmentOrderNumber()
+
+  console.log(supplierId)
+  console.log(productIds)
 
   res.status(200).render("inventory/shipmentDetailsForm", {
     title: "Finalize Shipment Details",
