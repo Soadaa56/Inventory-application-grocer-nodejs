@@ -82,9 +82,6 @@ const getInventoryStock = expressAsyncHandler(async (req, res) => {
   }, 0)
   const totalInventoryValueRounded = totalInventoryValue.toFixed(2)
 
-  console.log(inventoryStock)
-  console.log(totalInventoryValue)
-
   res.status(200).render("inventory/stock", {
     title: "Inventory Stock",
     inventoryStock,
