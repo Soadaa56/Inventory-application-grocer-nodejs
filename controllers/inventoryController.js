@@ -49,6 +49,20 @@ const postShipmentDetailsForm = expressAsyncHandler(async (req, res) => {
   res.status(200).redirect("/inventory/")
 })
 
+const getShipmentOrderById = expressAsyncHandler(async (req, res) => {
+  const shipmentId = req.params.id
+  const shipmentOrder = await db.getShipmentOrderById(shipmentId)
+
+  if (!shipmentOrder) {
+    return res.status(404).send("Shipment not found");
+  }
+
+  res.status(200).render("inventory/shipmentOrder", {
+    title: "Shipment Order Details",
+    shipmentOrder
+  })
+})
+
 const getAllShipments = expressAsyncHandler(async (req, res) => {
   shipments = await db.getAllShipments()
 
@@ -94,6 +108,7 @@ module.exports = {
   getShipmentNewForm,
   getShipmentDetailsForm,
   postShipmentDetailsForm,
+  getShipmentOrderById,
   getAllShipments,
   getInventoryStock
 }

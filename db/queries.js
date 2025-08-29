@@ -178,6 +178,16 @@ async function insertNewShipment(shipmentOrder) {
   }
 }
 
+async function getShipmentOrderById(shipmentId) {
+  const { rows } = await pool.query(`
+    SELECT p.id, p.name, p.size, sp.quantity
+    FROM shipment_products sp
+    JOIN products p ON sp.product_id = p.id
+    WHERE sp.shipment_id = ($1)
+    `, [shipmentId])
+  return rows
+}
+
 async function getAllShipments() {
   const { rows } = await pool.query(`
     SELECT shipments.*, suppliers.name AS supplier_name
@@ -236,6 +246,7 @@ module.exports = {
   fetchAllProductsWithSupplierId,
   fetchProductsWithSupplierId,
   insertNewShipment,
+  getShipmentOrderById,
   getAllShipments,
   fetchShipmentOrderNumber,
   getInventoryStock,
