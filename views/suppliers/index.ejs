@@ -2,17 +2,18 @@
 
 <h1><%= locals.title %></h1>
 
+<a href="/suppliers/new" class="btn btn-primary mb-4">Add New Supplier</a>
+
 <div>
   <% suppliers.forEach(supplier => { %>
-    <div>
+    <div class="card p-1 mb-1 shadow-sm">
       <div><%- supplier.name %>: <a href="/suppliers/edit/<%- supplier.id %>">Edit Supplier</a></div>
-      Filter Products By <a href="/suppliers/show/<%- supplier.name %>"><%- supplier.name %></a>
+      <div>Filter Products By <a href="/suppliers/show/<%- supplier.name %>"><%- supplier.name %></a></div>
     </div>
     <br>
   <% }); %>
 </div>
 
 <br><br><br>
-<a href="/suppliers/new" class="btn">Add New Supplier</a>
 
 <%- include("../partials/footer") %>

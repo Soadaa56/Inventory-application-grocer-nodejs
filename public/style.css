@@ -21,7 +21,7 @@ h1 {
   text-align: center;
 }
 
-.btn {
+.btn-custom {
   display: inline-block;
   padding: 0.5em 1em;
   background-color: blue;
@@ -42,9 +42,9 @@ h1 {
   background-color: red;
 }
 
-.btn:hover {
-  filter: brightness(150%);
-  transform: scale(101%);
+.btn-custom:hover {
+  filter: brightness(140%);
+  transform: scale(102%);
 }
 
 .center {

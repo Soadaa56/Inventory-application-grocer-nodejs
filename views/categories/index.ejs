@@ -2,18 +2,18 @@
 
 <h1><%= locals.title %></h1>
 
+<a href="/categories/new" class="btn btn-primary mb-4">Add New Category</a>
+
 <div>
   <% categories.forEach(category => { %>
-    <div>
+    <div class="card p-1 mb-1 shadow-sm">
       <div><%- category.name %>: <a href="/categories/edit/<%- category.id %>">Edit Category</a></div>
-      Filter Products By <a href="/categories/show/<%- category.name %>"><%- category.name %></a>
-      
+      <div>Filter Products By <a href="/categories/show/<%- category.name %>"><%- category.name %></a></div>
     </div>
     <br>
   <% }); %>
 </div>
 
 <br><br><br>
-<a href="/categories/new" class="btn">Add New Category</a>
 
 <%- include("../partials/footer") %>
