@@ -1,5 +1,5 @@
 html {
-  background-color: gainsboro;
+  background-color: whitesmoke;
   font-size: 20px;
 }
 
@@ -145,7 +145,7 @@ h1 {
 
 
 .nav-bar {
-  background-color: steelblue;
+  background-color: darkblue;
   border: 1px solid black;
   display: flex;
   justify-content: space-between;
