@@ -2,21 +2,23 @@
 
 <h1><%= locals.title %></h1>
 
-<div>
-  <p>TOTAL INVENTORY VALUE: $<%- totalInventoryValueRounded %></p>
+<div class="d-flex flex-column align-items-center">
+  <p class="h5">TOTAL INVENTORY VALUE: $<%- totalInventoryValueRounded %></p>
+  <canvas id="stockValueByCategoryPie" style="width: 300px; height: 300px;"></canvas>
 </div>
 
+
+
 <% inventoryStock.forEach(stock => { %>
-  <div>
-    ID: <span style="color: blue;"><%- stock.product_id %></span>,
-    NAME: <span style="color: blue;"><%- stock.name %></span>,
-    SIZE: <span style="color: blue;"><%- stock.size %></span>,
-    STOCK QUANTITY: <span style="color: blue;"><%- stock.total_quantity %></span>,
-    TOTAL STOCK VALUE: <span style="color: blue;"><%- stock.total_product_value %></span>
+  <div class="card p-1 mb-1 shadow-sm">
+    <div>ID: <span style="color: blue;"><%- stock.product_id %></span></div>
+    <div>NAME: <span style="color: blue;"><%- stock.name %></span></div>
+    <div>SIZE: <span style="color: blue;"><%- stock.size %></span></div>
+    <div>STOCK QUANTITY: <span style="color: blue;"><%- stock.total_quantity %></span></div>
+    <div>TOTAL STOCK VALUE: <span style="color: blue;">$<%- stock.total_product_value %></span></div>
   </div>
 <% }); %>
 
-<canvas id="stockValueByCategoryPie" style="width: 300px; height: 300px;"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/javascript/chart.js" type="module"></script>
 
